@@ -1,0 +1,16 @@
+.add-section{
+    margin-left: 1%;
+}
+.add-card-container-closed{
+    min-width: 300px;
+    background-color: rgba(196, 192, 192, 0.70);
+    border-radius: 2%;
+    padding: 1%;
+}
+.add-card-title-closed{
+    background: none;
+    border: 0;
+    color:rgb(86, 79, 86);
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,12 @@
+.card-container{
+    width: auto;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding-top:0.1rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin:0.4rem;
+}
+.card-text{
+    color:rgb(86, 79, 86);
+    font-size: 1.2rem}

@@ -1,0 +1,13 @@
+.board{
+    min-height: 100vh;
+    overflow: auto;
+}
+.nav-board{
+    color:whitesmoke;
+    font-size: 1.3rem;
+    margin:2%;
+}
+.lists-container{
+    display:flex;
+    margin-top: 2%;
+}
