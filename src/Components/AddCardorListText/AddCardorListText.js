@@ -10,25 +10,37 @@ function AddCardorListText({type, listId, setOpen}) {
   const placeholder = "Enter a title for this "+type+"..." 
   const {addCard, addList} = useContext(ContextAPI)
 
-  const handleAddCardorList = () => {
-    if (type === "card"){
+  const handleAddCardorList = (e) => {
+    //event.preventDefault();
+    console.log("función handleAddCardorList");
+    console.log("type"+type);
+    if(title !== ""){
+      if (type === "Card"){
       addCard(title, listId)
-    }
-    if (type === "list"){
+      }
+      if (type === "List"){
       addList(title)
+      }};
+    setTitle("");
+    setOpen(false);
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter'){
+      console.log("función handleKeyDown");
+      handleAddCardorList(e);
+      setOpen(false) //Al presionar 'Enter' se cierra el input      
     }
-    setTitle("")
-    setOpen(false)
   }
 
   return (
     
   <form className='form-container' >
 
-    <input className='input-container' type="text" value={title} placeholder={placeholder} onChange={e=>setTitle(e.target.value)} onBlur={()=>setOpen(false)}/>
+    <input className='input-container' type="text" id="inputNewCardorList" minLength={1} value={title} placeholder={placeholder} onChange={(e)=>setTitle(e.target.value)} onKeyDown={(e)=>handleKeyDown(e)}/>
 
     <div className='add-card-container'>
-      <button type="submit" className='button-add-card' listId={listId} onClick={()=>handleAddCardorList()} >Add {type}</button>
+      <button className='button-add-card' type="button" listId={listId} onClick={(e)=>handleAddCardorList(e)} >Add {type}</button>
       <div className='buttons-container'>  
       <button className='close-button' onClick={()=>setOpen(false)}><img className="close-icon" src={closeIcon} alt="close button"/></button>
       <button className='more-button'><img className="more-icon" src={moreIcon} alt="more button"/></button>
