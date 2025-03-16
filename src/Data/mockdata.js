@@ -4,22 +4,22 @@ const mockData = {
             id: "01list",
             title: "To do", 
             cards: [{
-                id: "01card",
+                id: "101card",
                 title: "Go to the bakery"
             }, {
-                id: "02card",
-                title: "Comprar tomate"
+                id: "102card",
+                title: "Send meeting invitations"
             }, {
-                id: "03card",
-                title: "Comprar pan"
+                id: "103card",
+                title: "Check emails"
             },]
         },
         "02list":{
             id: "02list",
             title: "In progress",
             cards: [{
-                id: "01card",
-                title: "Comprar útiles escolares"
+                id: "201card",
+                title: "Finish work presentation"
             }]
         }
     }, 

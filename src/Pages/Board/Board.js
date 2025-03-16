@@ -61,15 +61,34 @@ function Board() {
   }
 
   const onDragEnd = (result) => {
-    //console.log(result)
+    console.log(result)
     //result es un objeto que me trae toda la información sobre drag & drop events
+
+    if(result.destination == null){
+      console.log("Destination = null")
+      return; //Si no hay destination (se quiere hacer un drop donde no hay nada, retornamos nada)
+    }else{
+
+      const source = {sourceIndex: result.source.index,
+        sourceDroppableId: result.source.droppableId};
+        console.log("source: ", source);
+      
+      const destination = {destIndex: result.destination.index,
+        destDroppableId: result.destination.droppableId};
+        console.log("destination: ", destination)
+        
+      const {draggableId, type} = result
+      console.log("draggableId: ", draggableId)
+      console.log("type: ", type)
+    
+    /*
     const {destination, source, draggableId, type} = result
     console.log("source: ", source)
     console.log("destination: ", destination)
     console.log("draggableId: ", draggableId)
     console.log("type: ", type)
 
-    const {destination : {droppableId : destDroppableId}, source : {droppableId : sourceDroppableId}} = result
+    const {destination : {droppableId: destDroppableId}, source : {droppableId : sourceDroppableId}} = result;
     //selecciono el droppableId de destination y le cambio el nombre para destDroppableId
     console.table([
       {
@@ -88,54 +107,50 @@ function Board() {
         sourceIndex, 
         type
       }
-    ])
+    ])*/
 
-    if(!destination){
-      return; //Si no hay destination (se quiere hacer un drop donde no hay nada, retornamos nada)
+      if(type === "list"){
+        console.log("Dragging list")
+        const newListIds = data.listIds
+        newListIds.splice(source.sourceIndex, 1);
+        newListIds.splice(destination.destIndex, 0, draggableId)
+        return;
+      };
+    
+      const sourceList = data.lists[source.sourceDroppableId]
+      const destinationList = data.lists[destination.destDroppableId]
+      const draggingCard = sourceList.cards.filter((card)=> card.id === draggableId)[0]
+
+      if(source.sourceDroppableId === destination.destDroppableId){
+        console.log("Drag card into the same list")
+        //Utilizamos splice para cambiar los índices 
+        sourceList.cards.splice(source.sourceIndex, 1)
+        destinationList.cards.splice(destination.destIndex, 0, draggingCard)
+        //Actualizamos setData con los nuevos índices
+        setData({
+          ...data, 
+          lists: {
+            ...data.lists,
+            [sourceList.id] : destinationList,
+          }
+        })
+        return;
+      }else{
+        console.log("Drag card to a different list")
+        //Eliminar la card de la lista de origen
+        sourceList.cards.splice(source.sourceIndex, 1);
+        //Agregamos la card en la nueva lista
+        destinationList.cards.splice(destination.destIndex, 0, draggingCard)
+        //Actualizar Data
+        setData({
+          ...data, 
+          [sourceList.id] : sourceList,
+          [destinationList.id] : destinationList,
+        })
+      }
+
     }
 
-    if(type === "list"){
-      const newListIds = data.listIds
-      newListIds.splice(sourceIndex, 1);
-      newListIds.splice(destinationIndex, 0, draggableId)
-      return;
-    };
-    
-    const sourceList = data.lists[sourceDroppableId]
-    const destinationList = data.lists[destDroppableId]
-    const draggingCard = sourceList.cards.filter((card)=> card.id === draggableId)[0]
-
-    if(sourceDroppableId === destDroppableId){
-      console.log("Si estamos en la misma lista")
-      
-      //Utilizamos splice para cambiar los índices 
-      sourceList.cards.splice(sourceIndex, 1)
-      destinationList.cards.splice(destinationIndex, 0, draggingCard)
-      //Actualizamos setData con los nuevos índices
-      setData({
-        ...data, 
-        lists: {
-          ...data.lists,
-          [sourceList.id] : destinationList,
-        }
-      })
-    }else{
-      console.log("Si estamos en listas distintas")
-      
-      //Eliminar la card de la lista de origen
-      sourceList.cards.splice(sourceIndex, 1);
-      //Agregamos la card en la nueva lista
-      destinationList.cards.splice(destinationIndex, 0, draggingCard)
-      //Actualizar Data
-      setData({
-        ...data, 
-        [sourceList.id] : sourceList,
-        [destinationList.id] : destinationList,
-
-      })
-
-    }
-    
   }
   
   return (

@@ -13,7 +13,7 @@ function TrelloList({list, index}) {
         <div className="trello-list-container" {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
         <ListTitle title={list.title} listId={list.id}/>
 
-        <Droppable droppableId={list.id}>
+        <Droppable droppableId={list.id} type={'Card'}>
           {
             (provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps} > {/* Debemos incluir la lógica dentro de un div*/}
