@@ -180,6 +180,7 @@ function Board() {
           
       </Droppable>
       </DragDropContext>
+      <p className='footer'>@2025 Trello clone app</p>
     </div>
     
     </ContextAPI.Provider>

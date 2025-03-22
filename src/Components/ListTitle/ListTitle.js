@@ -8,6 +8,7 @@ function ListTitle({title, listId}) {
   const [open, setOpen] = useState(false)
   const [newTitle, setNewTitle] = useState(title)
   const {updateListTitle} = useContext(ContextAPI)
+  
 
   const handleBlur = () => {
     //actualizar new Title
@@ -22,19 +23,27 @@ function ListTitle({title, listId}) {
     }
   }
 
+  const handleClick = (e) => {
+    console.log("handleClick function")
+    console.log(e)
+    //deleteList(listId);    
+    }
+  
+
   return (
     <Fragment>  
 
     {open === false ? 
     <form className="list-title-container">
     <p className="list-title" onClick={()=>setOpen(true)}>{newTitle}</p>
-    <button className='more-button'><img className="more-icon" src={moreIcon} alt="more icon"/></button>
+    <button className='more-list-button' onClick={(e)=>handleClick(e)}>
+    <img className="more-list-icon" src={moreIcon} alt="more icon"/></button>
+    
     </form>
     : 
     <form className="list-title-container">
     <input className="list-title" type="text" placeholder={newTitle} onChange={(e)=>setNewTitle(e.target.value)} onBlur={()=>handleBlur()} onKeyDown={(e)=>handleKeyDown(e)} />
-    <button className='more-button'>
-    <img className="more-icon" src={moreIcon} alt="more icon"/></button></form>
+    </form>
     }
         
     </Fragment>

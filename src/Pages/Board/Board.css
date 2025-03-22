@@ -11,3 +11,10 @@
     display:flex;
     margin-top: 2%;
 }
+.footer{
+    color:whitesmoke;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+}

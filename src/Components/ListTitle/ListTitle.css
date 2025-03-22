@@ -22,13 +22,13 @@
     background-color:whitesmoke;
     margin-left: 0.4rem;
 }
-.more-button{
+.more-list-button{
     background-color: rgb(196, 192, 192);
     border-style: hidden;
     align-items: center;
     margin-right: 0.4rem;
 }
-.more-icon{
-    width: 1.8rem;
-    height: 1.8rem;
+.more-list-icon{
+    width: 1.4rem;
+    height: 1.4rem;
 }
