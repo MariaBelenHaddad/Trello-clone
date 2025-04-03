@@ -1,7 +1,7 @@
 import './AddCardorListText.css';
 import { useState, useContext } from 'react';
-import closeIcon from '../../Images/close_round_icon.png'
-import moreIcon from '../../Images/more_horizontal_icon.png'
+import closeIcon from '../../Images/close_round_icon.png';
+import moreIcon from '../../Images/more_horizontal_icon.png';
 import ContextAPI from '../../ContextAPI.js';
 
 function AddCardorListText({type, listId, setOpen}) {

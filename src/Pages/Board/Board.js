@@ -27,6 +27,28 @@ function Board() {
     console.log(data)
   }
 
+  const deleteCard = (cardId, listId, index) => {
+    console.log("Function deleteCard with cardId: "+cardId)
+    const selectedCard = data.lists[listId].cards[index];
+    //console.log(selectedCard)
+    //console.log(index)
+    //Eliminar la card de la lista de origen
+    const modifiedList = data.lists[listId].cards;
+    modifiedList.splice(index, 1);
+    //Lista actualizada
+    //console.log("Modified list: ")
+    //console.log(modifiedList)
+    
+    //Actualizar Data
+    setData({
+      ...data, 
+      lists: {
+        ...data.lists,
+        [data.lists[listId]] : { cards: [modifiedList] } }
+    })
+
+  }
+
   const addCard = (newTitle, listId) => {
     //npm i react-uuid (instalar paquete para crear uuid)
     //const productId = crypto.randomUUID(); alternativa con crypto package
@@ -154,7 +176,7 @@ function Board() {
   }
   
   return (
-    <ContextAPI.Provider value={{updateListTitle, addCard, addList}}> 
+    <ContextAPI.Provider value={{updateListTitle, addCard, addList, deleteCard}}> 
     {/* Con esta línea exportamos a través de ContextAPI la función updateLIstTitle para usarla en cualquier componente */}
     
     <div className="board">

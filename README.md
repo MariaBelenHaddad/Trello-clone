@@ -1,8 +1,24 @@
-# Getting Started with Create React App
+# Trello clone App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Trello app is a popular project management tool designed with simplicity, flexibility and easy to use.
 
-## Available Scripts
+This project recreates My board, with a simplified design for daily tasks. Despite this is an app for teams, the code is front-end developed without data base integration, which allows only one user to work with it.
+
+# Essential features of Trello clone
+
+`Visualization`: My board allows users to visualize tasks in a simple way using cards that can be moved across lists and be organized into columns with different priorities.
+
+`Customization`: Users are free to add and remove cards or lists when they need.
+
+`Personalization`: Change the name of the list to update it.
+
+`Drag and Drop Interface`: It is possible to move cards between lists with drag and drop action to make it more dynamic and easy to use.
+
+# Code
+
+Frontend is made with React and NPM libraries such as react-beautiful-dnd to develop Drag & Drop. The aim of this code is not to develop a full Trello app with Backend and API integration, but to understand the basics of Trello functions for desktop use and one-user management interface.
+
+# Getting Started
 
 In the project directory, you can run:
 
@@ -44,27 +60,3 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

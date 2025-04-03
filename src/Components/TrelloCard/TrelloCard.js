@@ -1,12 +1,13 @@
 import './TrelloCard.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import trashIcon from '../../Images/trash_can_delete_icon.png';
+import ContextAPI from '../../ContextAPI.js';
 
-function TrelloCard({card, index}) {
-  //console.log("Card title: "+card)
+function TrelloCard({card, index, listId}) {
 
   const [ishover, setisHover] = useState(false);
+  const {deleteCard} = useContext(ContextAPI)
 
   const handleOnMouseOver = () => {
     setisHover(true);
@@ -17,10 +18,10 @@ function TrelloCard({card, index}) {
   };
 
   const handleClick = (e) => {
-    console.log("handleClick function >> Delete card")
-    //console.log(e)
-    //deleteList(listId);    
-    }
+    const cardId = card.id
+    //console.log("CardId: " + cardId)
+    deleteCard(cardId, listId, index);    
+  };
 
   return (
     <Draggable draggableId={card.id} index={index}>
@@ -35,6 +36,7 @@ function TrelloCard({card, index}) {
           <p className="card-text">{card.title}</p>
 
           {ishover === true ?
+
           <button className='delete-button' onClick={(e)=>handleClick(e)}>
           <img className="delete-icon" src={trashIcon} alt="delete icon"/></button> : "" }   
 

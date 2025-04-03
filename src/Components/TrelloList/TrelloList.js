@@ -18,7 +18,7 @@ function TrelloList({list, index}) {
             (provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps} > {/* Debemos incluir la lógica dentro de un div*/}
               {list.cards.map((card, index) => (
-                <TrelloCard card={card} key={card.id} index={index}/> 
+                <TrelloCard card={card} key={card.id} index={index} listId={list.id}/> 
                 /*Al las TrelloCards debemos pasarle un index para que pueda funcionar el draggable */
                 ))
               }
